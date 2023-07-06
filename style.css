@@ -1,0 +1,26 @@
+.image-element {
+  width: 240px;
+  height: 100%;
+}
+
+.flex-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}
+
+.box {
+  float: left;
+  margin: 0 2px 2px 0;
+}
