@@ -60,26 +60,18 @@
 // const elementValue = document.querySelector("#value");
 // const dec = document.querySelector('[data-action="decrement"]');
 // const inc = document.querySelector('[data-action="increment"]');
-// function counter() {
-//   let CounterValue = 0;
-//   function increment() {
-//     return (CounterValue += 1);
-//   }
-//   function decrement() {
-//     return (CounterValue -= 1);
-//   }
-//   return { increment, decrement };
-// }
-// const start = counter();
+// const createIncrement = (counter = 0) => ({
+//   increment: () => counter++,
+//   decrement: () => counter--,
+// });
+// const start = createIncrement();
 
 // dec.addEventListener("click", () => {
-//   let result = start.decrement();
-//   elementValue.textContent = result;
+//   elementValue.textContent = start.decrement();
 // });
 
 // inc.addEventListener("click", () => {
-//   let result = start.increment();
-//   elementValue.textContent = result;
+//   elementValue.textContent = start.increment();
 // });
 
 // Task 5
@@ -87,32 +79,30 @@
 // const inputElem = document.querySelector("#name-input");
 // const spanElem = document.querySelector("#name-output");
 // inputElem.addEventListener("input", onInputChange);
-// function onInputChange(event) {
-//   spanElem.textContent = event.currentTarget.value;
-//   if (spanElem.textContent === "") {
+// function onInputChange({ target }) {
+//   spanElem.textContent = target.value;
+//   if (!spanElem.textContent) {
 //     spanElem.textContent = "незнакомец";
 //   }
 // }
 
 // Task 6
 
-// const inputElement = document.querySelector("#validation-input");
-// inputElement.addEventListener("input", onInputLength);
-// function onInputLength(value) {
-//   const standartLength = Number(value.currentTarget.dataset.length);
-//   const currentValue = value.currentTarget.value.length;
-//   if (standartLength === currentValue) {
-//     inputElement.classList.add("valid");
-//     inputElement.classList.remove("invalid");
-//     console.log(inputElement);
-//   } else if (standartLength !== currentValue) {
-//     inputElement.classList.add("invalid");
-//     inputElement.classList.remove("valid");
-//     console.log(inputElement);
-//   }
-//   console.log(currentValue);
-//   console.log(standartLength);
-// }
+const inputElement = document.querySelector("#validation-input");
+inputElement.addEventListener("input", onInputLength);
+function onInputLength(event) {
+  const standartLength = 6;
+  const currentValue = event.currentTarget.value.length;
+  if (standartLength === currentValue) {
+    inputElement.classList.add("valid");
+    inputElement.classList.remove("invalid");
+    console.log(inputElement);
+  } else {
+    inputElement.classList.add("invalid");
+    inputElement.classList.remove("valid");
+    console.log(inputElement);
+  }
+}
 
 // Task 7
 
@@ -126,34 +116,34 @@
 // }
 
 // Task 8
-const boxesElem = document.querySelector("#boxes");
-const inputElem = document.querySelector("#controls input");
-const buttonCreate = document.querySelector("[data-action='render']");
-const buttonDelete = document.querySelector("[data-action='destroy']");
-console.log(inputElem);
-console.log(boxesElem);
-console.log(buttonCreate);
+// const boxesElem = document.querySelector("#boxes");
+// const inputElem = document.querySelector("#controls input");
+// const buttonCreate = document.querySelector("[data-action='render']");
+// const buttonDelete = document.querySelector("[data-action='destroy']");
+// console.log(inputElem);
+// console.log(boxesElem);
+// console.log(buttonCreate);
 
-buttonCreate.addEventListener("click", (event) => {
-  createBoxes(inputElem.value);
-});
+// buttonCreate.addEventListener("click", (event) => {
+//   createBoxes(inputElem.value);
+// });
 
-const createBoxes = (amount) => {
-  let result = "";
-  let divSize = 30;
-  for (let i = 1; i <= amount; i += 1) {
-    divSize += 10;
-    const color =
-      "#" +
-      (Math.random().toString(16) + "000000").substring(2, 8).toUpperCase();
-    result += ` <div class="box" style="background-color: ${color}; 
-    width: ${divSize}px; height: ${divSize}px;
-    "   > </div>`;
-  }
-  boxesElem.innerHTML = result;
-};
+// const createBoxes = (amount) => {
+//   let result = "";
+//   let divSize = 30;
+//   for (let i = 1; i <= amount; i += 1) {
+//     divSize += 10;
+//     const color =
+//       "#" +
+//       (Math.random().toString(16) + "000000").substring(2, 8).toUpperCase();
+//     result += ` <div class="box" style="background-color: ${color};
+//     width: ${divSize}px; height: ${divSize}px;
+//     "   > </div>`;
+//   }
+//   boxesElem.innerHTML = result;
+// };
 
-buttonDelete.addEventListener("click", (event) => {
-  boxesElem.innerHTML = "";
-  inputElem.value = "";
-});
+// buttonDelete.addEventListener("click", (event) => {
+//   boxesElem.innerHTML = "";
+//   inputElem.value = "";
+// });
